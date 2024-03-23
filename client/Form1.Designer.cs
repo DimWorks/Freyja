@@ -30,11 +30,10 @@ namespace Freyja
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.picture = new System.Windows.Forms.PictureBox();
-            this.decorButton2 = new Freyja.DecorButton();
+            this.check = new Freyja.DecorButton();
             this.addFile = new Freyja.DecorButton();
-            this.decorButton3 = new Freyja.DecorButton();
+            this.register = new Freyja.DecorButton();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,24 +51,25 @@ namespace Freyja
             this.picture.DragDrop += new System.Windows.Forms.DragEventHandler(this.picture_DragDrop);
             this.picture.DragEnter += new System.Windows.Forms.DragEventHandler(this.picture_DragEnter);
             // 
-            // decorButton2
+            // check
             // 
-            this.decorButton2.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.decorButton2.BackgroundColor = System.Drawing.Color.LightSeaGreen;
-            this.decorButton2.BorderColor = System.Drawing.Color.LightSeaGreen;
-            this.decorButton2.BorderRadius = 20;
-            this.decorButton2.BorderSize = 2;
-            this.decorButton2.FlatAppearance.BorderSize = 0;
-            this.decorButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.decorButton2.Font = new System.Drawing.Font("Century Schoolbook", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.decorButton2.ForeColor = System.Drawing.Color.White;
-            this.decorButton2.Location = new System.Drawing.Point(500, 320);
-            this.decorButton2.Name = "decorButton2";
-            this.decorButton2.Size = new System.Drawing.Size(183, 59);
-            this.decorButton2.TabIndex = 9;
-            this.decorButton2.Text = "Проверить файл";
-            this.decorButton2.TextColor = System.Drawing.Color.White;
-            this.decorButton2.UseVisualStyleBackColor = false;
+            this.check.BackColor = System.Drawing.SystemColors.Menu;
+            this.check.BackgroundColor = System.Drawing.SystemColors.Menu;
+            this.check.BorderColor = System.Drawing.Color.LightSeaGreen;
+            this.check.BorderRadius = 20;
+            this.check.BorderSize = 2;
+            this.check.FlatAppearance.BorderSize = 0;
+            this.check.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.check.Font = new System.Drawing.Font("Century Schoolbook", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.check.ForeColor = System.Drawing.Color.Black;
+            this.check.Location = new System.Drawing.Point(500, 320);
+            this.check.Name = "check";
+            this.check.Size = new System.Drawing.Size(185, 60);
+            this.check.TabIndex = 9;
+            this.check.Text = "Проверить";
+            this.check.TextColor = System.Drawing.Color.Black;
+            this.check.UseVisualStyleBackColor = false;
+            this.check.Click += new System.EventHandler(this.check_Click);
             // 
             // addFile
             // 
@@ -89,25 +89,27 @@ namespace Freyja
             this.addFile.Text = "Добавить файл";
             this.addFile.TextColor = System.Drawing.Color.White;
             this.addFile.UseVisualStyleBackColor = false;
+            this.addFile.Click += new System.EventHandler(this.addFile_Click);
             // 
-            // decorButton3
+            // register
             // 
-            this.decorButton3.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.decorButton3.BackgroundColor = System.Drawing.Color.LightSeaGreen;
-            this.decorButton3.BorderColor = System.Drawing.Color.LightSeaGreen;
-            this.decorButton3.BorderRadius = 20;
-            this.decorButton3.BorderSize = 2;
-            this.decorButton3.FlatAppearance.BorderSize = 0;
-            this.decorButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.decorButton3.Font = new System.Drawing.Font("Century Schoolbook", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.decorButton3.ForeColor = System.Drawing.Color.White;
-            this.decorButton3.Location = new System.Drawing.Point(100, 320);
-            this.decorButton3.Name = "decorButton3";
-            this.decorButton3.Size = new System.Drawing.Size(180, 60);
-            this.decorButton3.TabIndex = 7;
-            this.decorButton3.Text = "Загрузить файл";
-            this.decorButton3.TextColor = System.Drawing.Color.White;
-            this.decorButton3.UseVisualStyleBackColor = false;
+            this.register.BackColor = System.Drawing.SystemColors.Menu;
+            this.register.BackgroundColor = System.Drawing.SystemColors.Menu;
+            this.register.BorderColor = System.Drawing.Color.LightSeaGreen;
+            this.register.BorderRadius = 20;
+            this.register.BorderSize = 2;
+            this.register.FlatAppearance.BorderSize = 0;
+            this.register.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.register.Font = new System.Drawing.Font("Century Schoolbook", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.register.ForeColor = System.Drawing.Color.Black;
+            this.register.Location = new System.Drawing.Point(100, 320);
+            this.register.Name = "register";
+            this.register.Size = new System.Drawing.Size(185, 60);
+            this.register.TabIndex = 7;
+            this.register.Text = "Зарегистрировать";
+            this.register.TextColor = System.Drawing.Color.Black;
+            this.register.UseVisualStyleBackColor = false;
+            this.register.Click += new System.EventHandler(this.register_Click);
             // 
             // Form1
             // 
@@ -115,11 +117,11 @@ namespace Freyja
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(784, 411);
-            this.Controls.Add(this.decorButton2);
+            this.Controls.Add(this.check);
             this.Controls.Add(this.addFile);
-            this.Controls.Add(this.decorButton3);
+            this.Controls.Add(this.register);
             this.Controls.Add(this.picture);
-            this.Controls.Add(this.listBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Фрейя";
@@ -129,12 +131,10 @@ namespace Freyja
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.PictureBox picture;
-        private DecorButton decorButton3;
+        private DecorButton register;
         private DecorButton addFile;
-        private DecorButton decorButton2;
+        private DecorButton check;
     }
 }
 

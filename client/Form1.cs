@@ -24,12 +24,19 @@ namespace Freyja
 
         private void picture_DragDrop(object sender, DragEventArgs e)
         {
+            register.BackColor = Color.LightSeaGreen;
+            register.ForeColor = Color.White;
+            register.BorderSize = 0;
+
+            check.BackColor = Color.LightSeaGreen;
+            check.ForeColor = Color.White;
+            check.BorderSize = 0;
+
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
 
-            foreach (string file in files)
-            {
-                MessageBox.Show(file);
-            }
+            MakeHash mh = new MakeHash();
+            mh.Show();
+            mh.getHashFileAsync(files[0]);
         }
 
         private void picture_DragEnter(object sender, DragEventArgs e)
@@ -39,5 +46,41 @@ namespace Freyja
                 e.Effect = DragDropEffects.All;
             }
         }
+
+        private void register_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void check_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addFile_Click(object sender, EventArgs e)
+        {
+            string pathFile = "";
+            using (OpenFileDialog openFile = new OpenFileDialog())
+            {
+                openFile.Title = "Выберите файл, который зарегестрировать";
+                openFile.Filter = "Все файлы| *.*";
+
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        MakeHash mh = new MakeHash();
+                        mh.Show();
+                        mh.getHashFileAsync(openFile.FileName);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ошибка доступа к файлу");
+                    }
+                }
+            }
+
+        }
+        
     }
 }
