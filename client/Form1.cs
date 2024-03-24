@@ -13,6 +13,9 @@ namespace Freyja
 {
     public partial class Form1 : Form
     {
+        private string hashFile = "NULL";
+        private MakeHash mh = new MakeHash();
+
         public Form1()
         {
             InitializeComponent();
@@ -34,7 +37,6 @@ namespace Freyja
 
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
 
-            MakeHash mh = new MakeHash();
             mh.Show();
             mh.getHashFileAsync(files[0]);
         }
@@ -49,7 +51,14 @@ namespace Freyja
 
         private void register_Click(object sender, EventArgs e)
         {
-
+            if(mh.hashFile == null)
+            {
+                MessageBox.Show("Сначала выберите файл");
+            }
+            else
+            {
+                MessageBox.Show(mh.hashFile);
+            }
         }
 
         private void check_Click(object sender, EventArgs e)
@@ -63,15 +72,16 @@ namespace Freyja
             using (OpenFileDialog openFile = new OpenFileDialog())
             {
                 openFile.Title = "Выберите файл, который зарегестрировать";
-                openFile.Filter = "Все файлы| *.*";
+                openFile.Filter = "Все файлы|*.*";
 
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        MakeHash mh = new MakeHash();
                         mh.Show();
                         mh.getHashFileAsync(openFile.FileName);
+                        hashFile = mh.hashFile;
+                        mh.Close();
                     }
                     catch
                     {
@@ -81,6 +91,21 @@ namespace Freyja
             }
 
         }
-        
+
+        //private void login_Click(object sender, EventArgs e)
+        //{
+        //    if (login.Text == "Введите логин")
+        //    {
+        //        login.Clear();
+        //    }
+        //}
+
+        //private void password_Click(object sender, EventArgs e)
+        //{
+        //    if (password.Text == "Введите пароль")
+        //    {
+        //        password.Clear();
+        //    }
+        //}
     }
 }
