@@ -23,7 +23,17 @@ namespace Freyja
             picture.AllowDrop = true;
             picture.DragEnter += picture_DragEnter;
             picture.DragDrop += picture_DragDrop;
+
+            this.KeyPreview = true; // Говорим, что следим за нажатием клавиши в данной форме
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(Control_KeyDown);
+
         }
+
+        private void Control_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) enter.PerformClick();
+        }
+
 
         private void picture_DragDrop(object sender, DragEventArgs e)
         {
@@ -82,6 +92,14 @@ namespace Freyja
                         mh.getHashFileAsync(openFile.FileName);
                         hashFile = mh.hashFile;
                         mh.Close();
+
+                        register.BackColor = Color.LightSeaGreen;
+                        register.ForeColor = Color.White;
+                        register.BorderSize = 0;
+
+                        check.BackColor = Color.LightSeaGreen;
+                        check.ForeColor = Color.White;
+                        check.BorderSize = 0;
                     }
                     catch
                     {
@@ -92,20 +110,25 @@ namespace Freyja
 
         }
 
-        //private void login_Click(object sender, EventArgs e)
-        //{
-        //    if (login.Text == "Введите логин")
-        //    {
-        //        login.Clear();
-        //    }
-        //}
+        private void decorButton2_Click(object sender, EventArgs e)
+        {
+            if (password.Password)
+            {
+                password.Password = false;
+            }
+            else
+            {
+                password.Password = true;
+            }
+        }
 
-        //private void password_Click(object sender, EventArgs e)
-        //{
-        //    if (password.Text == "Введите пароль")
-        //    {
-        //        password.Clear();
-        //    }
-        //}
+        private void enter_Click(object sender, EventArgs e)
+        {
+            authentication.Visible = false;
+            Client client = new Client();
+            client.connectToServer("Test");
+            client.Show();
+            //MessageBox.Show("login: " + login.Text + "\npass: " + password.Text);
+        }
     }
 }

@@ -32,16 +32,16 @@ namespace Freyja
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.picture = new System.Windows.Forms.PictureBox();
             this.label = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.authentication = new System.Windows.Forms.GroupBox();
+            this.enter = new Freyja.DecorButton();
+            this.password = new Freyja.DecorTextBox();
+            this.login = new Freyja.DecorTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.check = new Freyja.DecorButton();
             this.addFile = new Freyja.DecorButton();
             this.register = new Freyja.DecorButton();
-            this.login = new Freyja.DecorTextBox();
-            this.decorTextBox1 = new Freyja.DecorTextBox();
-            this.decorButton1 = new Freyja.DecorButton();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.authentication.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,18 +71,70 @@ namespace Freyja
             this.label.Text = "Перетащите файл сюда \r\nили нажмите";
             this.label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // groupBox1
+            // authentication
             // 
-            this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.groupBox1.Controls.Add(this.decorButton1);
-            this.groupBox1.Controls.Add(this.decorTextBox1);
-            this.groupBox1.Controls.Add(this.login);
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Location = new System.Drawing.Point(-3, -9);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(790, 420);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
+            this.authentication.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.authentication.Controls.Add(this.enter);
+            this.authentication.Controls.Add(this.password);
+            this.authentication.Controls.Add(this.login);
+            this.authentication.Controls.Add(this.pictureBox1);
+            this.authentication.Location = new System.Drawing.Point(-3, -9);
+            this.authentication.Name = "authentication";
+            this.authentication.Size = new System.Drawing.Size(790, 420);
+            this.authentication.TabIndex = 11;
+            this.authentication.TabStop = false;
+            // 
+            // enter
+            // 
+            this.enter.BackColor = System.Drawing.SystemColors.Menu;
+            this.enter.BackgroundColor = System.Drawing.SystemColors.Menu;
+            this.enter.BorderColor = System.Drawing.Color.LightSeaGreen;
+            this.enter.BorderRadius = 20;
+            this.enter.BorderSize = 2;
+            this.enter.FlatAppearance.BorderSize = 0;
+            this.enter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.enter.Font = new System.Drawing.Font("Century Schoolbook", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.enter.ForeColor = System.Drawing.Color.Black;
+            this.enter.Location = new System.Drawing.Point(294, 357);
+            this.enter.Name = "enter";
+            this.enter.Size = new System.Drawing.Size(186, 41);
+            this.enter.TabIndex = 5;
+            this.enter.Text = "Войти";
+            this.enter.TextColor = System.Drawing.Color.Black;
+            this.enter.UseVisualStyleBackColor = false;
+            this.enter.Click += new System.EventHandler(this.enter_Click);
+            // 
+            // password
+            // 
+            this.password.BackColor = System.Drawing.SystemColors.Menu;
+            this.password.BorderColor = System.Drawing.Color.LightSeaGreen;
+            this.password.BorderSize = 2;
+            this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.password.Location = new System.Drawing.Point(459, 295);
+            this.password.Margin = new System.Windows.Forms.Padding(6);
+            this.password.Name = "password";
+            this.password.Padding = new System.Windows.Forms.Padding(7);
+            this.password.Password = true;
+            this.password.Size = new System.Drawing.Size(229, 39);
+            this.password.TabIndex = 4;
+            this.password.UnderLineStyle = true;
+            this.password.WatermarkText = "Введите пароль";
+            // 
+            // login
+            // 
+            this.login.BackColor = System.Drawing.SystemColors.Menu;
+            this.login.BorderColor = System.Drawing.Color.LightSeaGreen;
+            this.login.BorderSize = 2;
+            this.login.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.login.Location = new System.Drawing.Point(103, 295);
+            this.login.Margin = new System.Windows.Forms.Padding(6);
+            this.login.Name = "login";
+            this.login.Padding = new System.Windows.Forms.Padding(7);
+            this.login.Password = false;
+            this.login.Size = new System.Drawing.Size(229, 39);
+            this.login.TabIndex = 3;
+            this.login.UnderLineStyle = true;
+            this.login.WatermarkText = "Введите логин";
             // 
             // pictureBox1
             // 
@@ -156,62 +208,13 @@ namespace Freyja
             this.register.UseVisualStyleBackColor = false;
             this.register.Click += new System.EventHandler(this.register_Click);
             // 
-            // login
-            // 
-            this.login.BackColor = System.Drawing.SystemColors.Menu;
-            this.login.BorderColor = System.Drawing.Color.LightSeaGreen;
-            this.login.BorderSize = 2;
-            this.login.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.login.Location = new System.Drawing.Point(103, 295);
-            this.login.Margin = new System.Windows.Forms.Padding(6);
-            this.login.Name = "login";
-            this.login.Padding = new System.Windows.Forms.Padding(7);
-            this.login.Size = new System.Drawing.Size(229, 39);
-            this.login.TabIndex = 3;
-            this.login.UnderLineStyle = true;
-            this.login.WatermarkText = "Введите логин";
-            // 
-            // decorTextBox1
-            // 
-            this.decorTextBox1.BackColor = System.Drawing.SystemColors.Menu;
-            this.decorTextBox1.BorderColor = System.Drawing.Color.LightSeaGreen;
-            this.decorTextBox1.BorderSize = 2;
-            this.decorTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.decorTextBox1.Location = new System.Drawing.Point(459, 295);
-            this.decorTextBox1.Margin = new System.Windows.Forms.Padding(6);
-            this.decorTextBox1.Name = "decorTextBox1";
-            this.decorTextBox1.Padding = new System.Windows.Forms.Padding(7);
-            this.decorTextBox1.Size = new System.Drawing.Size(229, 39);
-            this.decorTextBox1.TabIndex = 4;
-            this.decorTextBox1.UnderLineStyle = true;
-            this.decorTextBox1.WatermarkText = "Введите пароль";
-            // 
-            // decorButton1
-            // 
-            this.decorButton1.BackColor = System.Drawing.SystemColors.Menu;
-            this.decorButton1.BackgroundColor = System.Drawing.SystemColors.Menu;
-            this.decorButton1.BorderColor = System.Drawing.Color.LightSeaGreen;
-            this.decorButton1.BorderRadius = 20;
-            this.decorButton1.BorderSize = 2;
-            this.decorButton1.FlatAppearance.BorderSize = 0;
-            this.decorButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.decorButton1.Font = new System.Drawing.Font("Century Schoolbook", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.decorButton1.ForeColor = System.Drawing.Color.Black;
-            this.decorButton1.Location = new System.Drawing.Point(287, 357);
-            this.decorButton1.Name = "decorButton1";
-            this.decorButton1.Size = new System.Drawing.Size(186, 41);
-            this.decorButton1.TabIndex = 5;
-            this.decorButton1.Text = "Войти";
-            this.decorButton1.TextColor = System.Drawing.Color.Black;
-            this.decorButton1.UseVisualStyleBackColor = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(784, 411);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.authentication);
             this.Controls.Add(this.label);
             this.Controls.Add(this.check);
             this.Controls.Add(this.addFile);
@@ -224,7 +227,7 @@ namespace Freyja
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Фрейя";
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.authentication.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -237,11 +240,11 @@ namespace Freyja
         private DecorButton addFile;
         private DecorButton check;
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox authentication;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private DecorTextBox decorTextBox1;
+        private DecorTextBox password;
         private DecorTextBox login;
-        private DecorButton decorButton1;
+        private DecorButton enter;
     }
 }
 
