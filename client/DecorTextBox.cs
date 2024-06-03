@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Freyja
 {
@@ -11,8 +12,9 @@ namespace Freyja
         private Color borderColor = Color.MediumBlue;
         private int borderSize = 2;
         private bool underLineStyle = false;
-
-       
+        private bool isPassword = false;
+        private string text;
+        private bool isReadOnly = false;
 
         public DecorTextBox()
         {
@@ -29,6 +31,20 @@ namespace Freyja
             set
             {
                 borderColor = value;
+                this.Invalidate();
+            }
+        }
+
+        public int MaxLength
+        {
+            get
+            {
+                return textBox1.MaxLength;
+            }
+
+            set
+            {
+                textBox1.MaxLength = value;
                 this.Invalidate();
             }
         }
@@ -61,13 +77,54 @@ namespace Freyja
             }
         }
 
+        public bool Password
+        {
+            get
+            {
+                return isPassword;
+            }
 
+            set
+            {
+                isPassword = value;
+                this.Invalidate();
+            }
+        }
+
+        public bool ReadOnly
+        {
+            get
+            {
+                return isReadOnly;
+            }
+
+            set
+            {
+                isReadOnly = value;
+                this.Invalidate();
+            }
+        }
+
+        public string Text
+        {
+            get
+            {
+                return textBox1.Text;
+            }
+
+            set
+            {
+                text = value;
+                this.Invalidate();
+            }
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             Graphics graph = e.Graphics;
-            ////Draw border
+
+            //Draw border
             using (Pen penBorder = new Pen(borderColor, borderSize))
             {
                 penBorder.Alignment = System.Drawing.Drawing2D.PenAlignment.Inset;
@@ -80,7 +137,6 @@ namespace Freyja
                     graph.DrawRectangle(penBorder, 0, 0, this.Width - 0.5F, this.Height - 0.5F);
                 }
             }
-
         }
 
         protected override void OnResize(EventArgs e)
@@ -111,7 +167,10 @@ namespace Freyja
                 textBox1.MinimumSize = new Size(0, txtHeight);
                 textBox1.Multiline = false;
 
+                textBox1.UseSystemPasswordChar = isPassword;
+
                 this.Height = textBox1.Height + this.Padding.Top + this.Padding.Bottom;
+                
             }
         }
 
@@ -137,6 +196,21 @@ namespace Freyja
             SendMessage(textBox1.Handle, EM_SETCUEBANNER, 0, watermarkText);
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            // Обрабатываем изменение текста в текстбоксе
+            string text = textBox1.Text;
 
+            // Используем регулярное выражение, чтобы проверить, что текст состоит только из букв без пробелов
+            Regex regex = new Regex(@"^[a-zA-Zа-яА-Я0-9]*$");
+            if (!regex.IsMatch(text))
+            {
+                // Если текст не соответствует регулярному выражению, обрезаем последний введённый символ
+                textBox1.Text = Regex.Replace(text, @"[^a-zA-Zа-яА-Я0-9]", "");
+
+                // Устанавливаем курсор в конец текста
+                textBox1.SelectionStart = textBox1.Text.Length;
+            }
+        }
     }
 }
